@@ -60,8 +60,11 @@ insert into cliente (cod_clie,nome_clie,endereco,cidade,cep,uf,cnpj,ie) values (
 insert into cliente (cod_clie,nome_clie,endereco,cidade,cep,uf,cnpj,ie) values (390, 'Sebastião', 'Rua da Igreja, 10', 'Uberaba', '30438700', 'MG', '32176547/213-3', '9071')
 insert into cliente (cod_clie,nome_clie,endereco,cidade,cep,uf,cnpj,ie) values (234, 'José', 'Quadra 3, Bl. 3, sl. 1003', 'Brasília', '22841650', 'DF', '21763576/1232-3', '2931')
 
-
-
+insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (209, 'José', 1800, 'C');
+insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (111, 'Carlos', 2490, 'A');
+insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (011, 'João', 2780, 'C');
+insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (240, 'Antônio', 9500, 'C');
+insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (720, 'Antônio', 9500, 'C');
 
 
 sp_help cliente;
