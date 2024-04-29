@@ -31,10 +31,17 @@ create table pedido(
 	pr_entrega numeric (3) not null,
 	cod_clie numeric (4),
 	cod_ven numeric (4),
-	--item_pedido N TEM ND NO PDF
+);
+
+--arrumar essa table
+create table item_pedido(
 	cod_prod numeric (4),
 	quant numeric (8,2)
 );
+
+
+ALTER TABLE pedido
+	add constraint cod_cl_FK foreign key (cod_clie) references cliente(cod_clie);
 
 ALTER TABLE pedido
 	add constraint cod_clie_FK foreign key (cod_clie) references cliente(cod_clie);
@@ -64,7 +71,43 @@ insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (209, 'José'
 insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (111, 'Carlos', 2490, 'A');
 insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (011, 'João', 2780, 'C');
 insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (240, 'Antônio', 9500, 'C');
-insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (720, 'Antônio', 9500, 'C');
+insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (720, 'Felipe', 4600, 'A');
+insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (213, 'Jonas', 2300, 'A');
+insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (101, 'João', 2650, 'C');
+insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (310, 'Josias', 870, 'B');
+insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (250, 'Maurício', 2930, 'B');
+
+insert into produto (cod_prod,unidade,descricao,val_unit) values (25, 'KG', 'Queijo', 0.97);
+insert into produto (cod_prod,unidade,descricao,val_unit) values (31, 'BAR', 'Chocolate', 0.87);
+insert into produto (cod_prod,unidade,descricao,val_unit) values (78, 'L', 'Vinho', 2.00);
+insert into produto (cod_prod,unidade,descricao,val_unit) values (22, 'M', 'Linho', 0.11);
+insert into produto (cod_prod,unidade,descricao,val_unit) values (30, 'SAC', 'Açúcar', 0.30);
+insert into produto (cod_prod,unidade,descricao,val_unit) values (53, 'M', 'Linha', 1.80);
+insert into produto (cod_prod,unidade,descricao,val_unit) values (13, 'G', 'Ouro', 6.18);
+insert into produto (cod_prod,unidade,descricao,val_unit) values (45, 'M', 'Madeira', 0.25);
+insert into produto (cod_prod,unidade,descricao,val_unit) values (87, 'M', 'Cano', 1.97);
+insert into produto (cod_prod,unidade,descricao,val_unit) values (77, 'M', 'Papel', 1.05);
+
+insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (121, 20, 410, 209);
+insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (97, 20, 720, 101);
+insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (101, 15, 720, 101);
+insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (137, 20, 720, 720);
+insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (148, 20, 720, 101);
+insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (189, 15, 870, 213);
+insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (104, 30, 110, 101);
+insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (203, 30, 830, 250);
+insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (98, 20, 410, 209);
+insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (143, 30, 20, 111);
+insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (105, 30, 180, 240);
+insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (111, 15, 260, 240);
+insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (103, 20, 260, 11);
+insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (91, 20, 260, 11);
+insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (138, 20, 260, 11);
+insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (108, 15, 290, 310);
+insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (119, 30, 390, 250);
+insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (127, 10, 410, 11);
+
+insert into item_pedido
 
 
 sp_help cliente;
