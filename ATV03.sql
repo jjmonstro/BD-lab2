@@ -1,5 +1,5 @@
-create database ATV03
-use ATV03
+create database ATV04
+use ATV04
 
 create table cliente(
 	cod_clie numeric (4) primary key,
@@ -33,12 +33,14 @@ create table pedido(
 	cod_ven numeric (4),
 );
 
---arrumar essa table
 create table item_pedido(
+	num_pedido numeric (4),
 	cod_prod numeric (4),
 	quant numeric (8,2)
 );
 
+ALTER TABLE item_pedido
+	add constraint num_pedido_FK foreign key (num_pedido) references pedido(num_pedido);
 
 ALTER TABLE pedido
 	add constraint cod_cl_FK foreign key (cod_clie) references cliente(cod_clie);
@@ -49,8 +51,7 @@ ALTER TABLE pedido
 ALTER TABLE pedido
 	add constraint cod_ven_FK foreign key (cod_ven) references vendedor(cod_ven);
 
-ALTER TABLE pedido
-	add constraint cod_prod_FK foreign key (cod_prod) references produto(cod_prod);
+
 
 insert into cliente (cod_clie,nome_clie,endereco,cidade,cep,uf,cnpj,ie) values (720, 'Ana', 'Rua 17 n.19', 'Niterói', '24358310', 'RJ', '12113231/0001-34', '2134')
 insert into cliente (cod_clie,nome_clie,endereco,cidade,cep,uf,cnpj,ie) values (870, 'Flávio', 'Av. Pres. Vargas, 10', 'São Paulo', '22763931', 'SP', '22534126/9387-9', '4631')
@@ -67,15 +68,15 @@ insert into cliente (cod_clie,nome_clie,endereco,cidade,cep,uf,cnpj,ie) values (
 insert into cliente (cod_clie,nome_clie,endereco,cidade,cep,uf,cnpj,ie) values (390, 'Sebastião', 'Rua da Igreja, 10', 'Uberaba', '30438700', 'MG', '32176547/213-3', '9071')
 insert into cliente (cod_clie,nome_clie,endereco,cidade,cep,uf,cnpj,ie) values (234, 'José', 'Quadra 3, Bl. 3, sl. 1003', 'Brasília', '22841650', 'DF', '21763576/1232-3', '2931')
 
-insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (209, 'José', 1800, 'C');
-insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (111, 'Carlos', 2490, 'A');
-insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (011, 'João', 2780, 'C');
-insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (240, 'Antônio', 9500, 'C');
-insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (720, 'Felipe', 4600, 'A');
-insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (213, 'Jonas', 2300, 'A');
-insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (101, 'João', 2650, 'C');
-insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (310, 'Josias', 870, 'B');
-insert into vendedor (cod_ven,nome_ven,salario_fixo,cod_ven) values (250, 'Maurício', 2930, 'B');
+insert into vendedor (cod_ven,nome_ven,salario_fixo,comissao) values (209, 'José', 1800, 'C');
+insert into vendedor (cod_ven,nome_ven,salario_fixo,comissao) values (111, 'Carlos', 2490, 'A');
+insert into vendedor (cod_ven,nome_ven,salario_fixo,comissao) values (011, 'João', 2780, 'C');
+insert into vendedor (cod_ven,nome_ven,salario_fixo,comissao) values (240, 'Antônio', 9500, 'C');
+insert into vendedor (cod_ven,nome_ven,salario_fixo,comissao) values (720, 'Felipe', 4600, 'A');
+insert into vendedor (cod_ven,nome_ven,salario_fixo,comissao) values (213, 'Jonas', 2300, 'A');
+insert into vendedor (cod_ven,nome_ven,salario_fixo,comissao) values (101, 'João', 2650, 'C');
+insert into vendedor (cod_ven,nome_ven,salario_fixo,comissao) values (310, 'Josias', 870, 'B');
+insert into vendedor (cod_ven,nome_ven,salario_fixo,comissao) values (250, 'Maurício', 2930, 'B');
 
 insert into produto (cod_prod,unidade,descricao,val_unit) values (25, 'KG', 'Queijo', 0.97);
 insert into produto (cod_prod,unidade,descricao,val_unit) values (31, 'BAR', 'Chocolate', 0.87);
@@ -107,10 +108,41 @@ insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (108, 15, 
 insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (119, 30, 390, 250);
 insert into pedido (num_pedido, pr_entrega, cod_clie, cod_ven) values (127, 10, 410, 11);
 
-insert into item_pedido
-
+insert into item_pedido (num_pedido,cod_prod,quant) values (121, 25, 10);
+insert into item_pedido (num_pedido,cod_prod,quant) values (121, 31, 35);
+insert into item_pedido (num_pedido,cod_prod,quant) values (97, 77, 20);
+insert into item_pedido (num_pedido,cod_prod,quant) values (101, 31, 9);
+insert into item_pedido (num_pedido,cod_prod,quant) values (101, 78, 18);
+insert into item_pedido (num_pedido,cod_prod,quant) values (101, 13, 5);
+insert into item_pedido (num_pedido,cod_prod,quant) values (98, 77, 5);
+insert into item_pedido (num_pedido,cod_prod,quant) values (148, 45, 8);
+insert into item_pedido (num_pedido,cod_prod,quant) values (148, 31, 7);
+insert into item_pedido (num_pedido,cod_prod,quant) values (148, 77, 3);
+insert into item_pedido (num_pedido,cod_prod,quant) values (148, 25, 10);
+insert into item_pedido (num_pedido,cod_prod,quant) values (148, 78, 30);
+insert into item_pedido (num_pedido,cod_prod,quant) values (104, 53, 32);
+insert into item_pedido (num_pedido,cod_prod,quant) values (203, 31, 6);
+insert into item_pedido (num_pedido,cod_prod,quant) values (189, 78, 45);
+insert into item_pedido (num_pedido,cod_prod,quant) values (143, 31, 20);
+insert into item_pedido (num_pedido,cod_prod,quant) values (143, 78, 10);
 
 sp_help cliente;
 sp_help vendedor;
 sp_help produto;
 sp_help pedido;
+
+select nome_clie, cnpj FROM cliente where cod_clie>500
+select nome_ven, salario_fixo FROM vendedor where comissao='A' or comissao='B'
+select descricao FROM produto where unidade!= 'KG'
+select num_pedido FROM pedido where cod_clie=410 and cod_ven=209 
+select num_pedido FROM pedido where pr_entrega=20 and cod_ven=101 or cod_ven= 11
+select num_pedido FROM item_pedido where cod_prod= 77 or cod_prod= 53 or cod_prod= 31 
+select cod_clie FROM cliente where cod_clie between 200 and 800 and cidade='São Paulo'  
+select cod_prod FROM item_pedido where num_pedido=148
+select cod_clie FROM cliente where cod_clie between 130 and 390 order by cod_clie ASC
+select nome_clie FROM cliente where nome_clie between 'A' and 'S' 
+select nome_clie, uf FROM cliente where uf='SP' and uf='MG' and uf='RJ'
+select descricao, val_unit from produto where unidade='BAR' or unidade='L' or unidade='G'
+select cod_clie, nome_clie FROM cliente where cod_clie between 20 and 180 or cod_clie between 250 and 720
+select * FROM item_pedido where cod_prod != 25 and cod_prod != 53 and cod_prod != 78 and cod_prod=77 or cod_prod=13
+select cod_clie, nome_clie FROM cliente where cod_clie between 20 and 350 and uf='SP' or uf='MG' or uf='RJ'
