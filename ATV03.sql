@@ -146,3 +146,26 @@ select descricao, val_unit from produto where unidade='BAR' or unidade='L' or un
 select cod_clie, nome_clie FROM cliente where cod_clie between 20 and 180 or cod_clie between 250 and 720
 select * FROM item_pedido where cod_prod != 25 and cod_prod != 53 and cod_prod != 78 and cod_prod=77 or cod_prod=13
 select cod_clie, nome_clie FROM cliente where cod_clie between 20 and 350 and uf='SP' or uf='MG' or uf='RJ'
+
+SELECT salario_fixo FROM vendedor
+
+SELECT
+salario_fixo,
+salario_fixo/0.35,
+ROUND (salario_fixo/0.35,2,4), 
+ROUND (salario_fixo/0.35,4,3), 
+ROUND (salario_fixo/0.35,1),
+ROUND (salario_fixo/0.35,-1),
+ROUND (salario_fixo/0.35,-3)
+from vendedor
+
+
+
+DECLARE @nome varchar(20)
+
+SET @nome = 'Correx'
+
+SELECT
+	UPPER(@nome) AS 'EM MAIUSCULAS',
+	LOWER(@nome) AS 'em minusculas',
+	LEN(@nome) AS 'Qtd. de caracteres'

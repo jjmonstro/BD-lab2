@@ -1,0 +1,8 @@
+https://learn.microsoft.com/en-us/sql/t-sql/functions/functions?view=sql-server-ver15
+
+PESQUISAR 10 FUNÇÕES E DEMONSTRAR O USO ENTRE AS CATEGORIAS:
+
+AGGREGATE
+DATE & TIME
+MATHEMATICAL
+STRING
