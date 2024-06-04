@@ -50,6 +50,13 @@ create table item_pedido (
 	quant numeric(10,2)
 );
 
+alter table vendedor add dt_adm DATE 
+alter table vendedor add dt_demissao DATE  
+
+update vendedor set dt_adm = getdate();
+update vendedor set dt_demissao = getdate();
+select * from vendedor
+
 --Inserção dos dados do cliente
 insert into cliente values(720,'Ana','Rua 17 n.19','Niteroi','24358310','RJ','12113231/0001-34','2134');
 insert into cliente values(870,'Flavio','Av. Pres. Vargas, 10','Sao Paulo','22763931','SP','22534126/9387-9','4631');
@@ -169,4 +176,29 @@ select nome_clie from cliente where nome_clie like '%o%' and nome_clie like '%e%
 select nome_clie from cliente where nome_clie not like '%u%'
 
 select nome_clie from cliente where nome_clie like '%a%' and nome_clie like '%e%'
+
+select count(*) AS 'Quantidade' from vendedor
+
+select count(*) AS 'Quantidade sem cep' from cliente where cep is null
+
+select count(*) AS 'Quantidade' from cliente where cep is not null
+
+select count(*) AS 'Quantidade' from produto where val_unit > 50
+
+select SUM(salario_fixo) AS 'Soma' from vendedor 
+
+select SUM(val_unit) AS 'Soma' from produto
+
+select AVG(salario_fixo) AS 'Media' from vendedor
+
+select MAX(salario_fixo) AS 'Maior', MIN(salario_fixo) AS 'Menor' from vendedor
+
+update vendedor set dt_adm = dateadd(day,-560,dt_adm) where comissao = 'A'
+select * from vendedor
+
+update vendedor set dt_adm = dateadd(day,-860,dt_adm) where comissao = 'B'
+
+update vendedor set dt_adm = dateadd(day,-1000,dt_adm) where comissao = 'C'
+
+update vendedor set dt_adm = NULL where comissao = 'A'
 
