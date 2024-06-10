@@ -169,3 +169,10 @@ SELECT
 	UPPER(@nome) AS 'EM MAIUSCULAS',
 	LOWER(@nome) AS 'em minusculas',
 	LEN(@nome) AS 'Qtd. de caracteres'
+
+
+select vendedor.nome_ven, pedido.* from vendedor inner join pedido on vendedor.cod_ven = pedido.cod_ven order by pedido.num_pedido ASC 
+
+select num_pedido, nome_ven, nome_clie from vendedor, pedido, cliente 
+
+select v.nome_ven, c.nome_clie from vendedor v, cliente c inner join pedido p on c.cod_clie = p.cod_clie order by 1
