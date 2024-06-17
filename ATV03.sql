@@ -170,9 +170,31 @@ SELECT
 	LOWER(@nome) AS 'em minusculas',
 	LEN(@nome) AS 'Qtd. de caracteres'
 
+SELECT * from pedido
 
 select vendedor.nome_ven, pedido.* from vendedor inner join pedido on vendedor.cod_ven = pedido.cod_ven order by pedido.num_pedido ASC 
 
-select num_pedido, nome_ven, nome_clie from vendedor, pedido, cliente 
+select p.num_pedido, v.nome_ven, c.nome_clie from pedido p
+inner join vendedor v on v.cod_ven = p.cod_ven
+inner join cliente c on p.cod_clie = p.cod_clie
 
-select v.nome_ven, c.nome_clie from vendedor v, cliente c inner join pedido p on c.cod_clie = p.cod_clie order by 1
+select v.nome_ven, c.nome_clie from pedido p 
+inner join cliente c on c.cod_clie = p.cod_clie
+inner join vendedor v on v.cod_ven = p.cod_ven
+
+select i.num_pedido, p.descricao  from item_pedido i
+inner join produto p on p.cod_prod = i.cod_prod
+
+select p.cod_clie, i.cod_prod from item_pedido i inner join pedido p on p.num_pedido = i.num_pedido
+
+select p.cod_ven, i.cod_prod from item_pedido i inner join pedido p on p.num_pedido = i.num_pedido
+
+
+select p.cod_clie, i.cod_prod from item_pedido i inner join pedido p on p.num_pedido = i.num_pedido where i.cod_prod = 31
+
+select p.cod_ven, i.cod_prod from item_pedido i inner join pedido p on p.num_pedido = i.num_pedido where i.cod_prod = 31
+
+
+select * from item_pedido
+SELECT * from pedido
+SELECT * from produto
